@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #0b0b0b;
+    font-size: 16px;
+    background-color: #ffffff;
+}
+
+a, a:hover, a:visited {
+    text-decoration: none;
+    color: #0b0b0b;
+}
+
+nav ul {
+    list-style-type: none;
+    padding-left: 0;
+}
