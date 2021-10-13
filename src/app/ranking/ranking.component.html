@@ -1,5 +1,25 @@
 <div class="container">
     <section>
-        <p>ranking works!</p>
+        <h1>{{info.getHeader()}}</h1>
+        <button (click)=tempSwitchLabel()> {{order}} </button>
+        <button (click)=info.sortTeamsByName()> Sortuj po nazwie klubu</button>
+        <button (click)=info.sortTeamsByPoints()> Sortuj po liczbie punktów</button>
+        <button (click)=info.sortTeamsByRank()> Sortuj po pozycji</button>
+
+        <div *ngFor='let team of info.teams'>
+            <p>
+                <img class="logo" alt="Logo" src = "{{team.logo}}"/>
+                {{team.abbreviation}}
+                {{team.name}}
+                {{team.position}}
+                pt:{{team.points}}
+                {{team.wins}}
+                {{team.losses}}
+                {{team.draws}}
+                {{team.goalsFor}}
+                {{team.goalsAgainst}}
+                {{team.goalDifference}}
+            </p>
+        </div>        
     </section>
 </div>

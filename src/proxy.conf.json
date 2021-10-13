@@ -1,0 +1,10 @@
+{
+    "/api": {
+      "target": "https://api-football-standings.azharimm.site/leagues/eng.1/standings",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }
