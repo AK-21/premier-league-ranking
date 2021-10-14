@@ -1,10 +1,14 @@
 <div class="container">
     <section>
         <h1>{{info.getHeader()}}</h1>
-        <button (click)=tempSwitchLabel()> {{order}} </button>
-        <button (click)=info.sortTeamsByName()> Sortuj po nazwie klubu</button>
-        <button (click)=info.sortTeamsByPoints()> Sortuj po liczbie punktów</button>
-        <button (click)=info.sortTeamsByRank()> Sortuj po pozycji</button>
+
+        <div ngbDropdown class="dropdown d-inline-block">
+            <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Sortuj</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem (click)=info.sortTeamsByName()>Po nazwie klubu</button>
+              <button ngbDropdownItem (click)=info.sortTeamsByPoints()>Po liczbie punktów</button>
+            </div>
+          </div>
 
         <div *ngFor='let team of info.teams'>
             <p>
@@ -20,6 +24,6 @@
                 {{team.goalsAgainst}}
                 {{team.goalDifference}}
             </p>
-        </div>        
+        </div>
     </section>
 </div>

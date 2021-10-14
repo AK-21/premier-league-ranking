@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RankingRoutingModule } from './ranking-routing.module';
 import { RankingComponent } from './ranking.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { RankingComponent } from './ranking.component';
   ],
   imports: [
     CommonModule,
-    RankingRoutingModule
+    RankingRoutingModule,
+    NgbModule
   ]
 })
 export class RankingModule { }

@@ -11,12 +11,12 @@ export class RankingComponent implements OnInit {
 
   constructor(private rankingService:RankingService) { }
 
-  info:any;
+  info:RankingInfo = RankingInfo.empty();
   
   order="ASC";
   tempSwitchLabel() {
-    if(this.info != undefined)
-    this.info.revertTeamsOrder();
+    //if(this.info != undefined)
+    //this.info.revertTeamsOrder();
 
     if(this.order==="ASC")
       this.order="DESC";
@@ -26,7 +26,8 @@ export class RankingComponent implements OnInit {
 
   ngOnInit(): void {
     this.rankingService.getFullInfo().subscribe(x=>{
-          this.info = new RankingInfo(x);
+          if(x != null)
+            this.info = new RankingInfo(x);
     });
   }
 

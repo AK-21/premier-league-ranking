@@ -5,41 +5,51 @@ import { HttpClient } from '@angular/common/http';
 
 export class RankingInfo {
 
-  constructor(jsonSource: any) {
-    const STAT_POINTS: number = 6;
-    const STAT_RANK: number = 8;
-    const STAT_WINS: number = 1;
-    const STAT_LOSSES: number = 2;
-    const STAT_DRAWS: number = 3;
-    const STAT_GOALS_FOR: number = 4;
-    const STAT_GOALS_AGAINST: number = 5;
-    const STAT_GOAL_DIFFERENCE: number = 9;
+  static empty(): RankingInfo {
+    return new RankingInfo();
+  }
 
-    this._name = jsonSource.data.name;
-    this._season = jsonSource.data.seasonDisplay;
-    this._teams = Array<any>();
+ constructor(jsonSource: any = null) {
+    if(jsonSource == null) {
+      this._name = "";
+      this._season = "";
+      this._teams = Array<any>();
+    } else {
+      const STAT_POINTS: number = 6;
+      const STAT_RANK: number = 8;
+      const STAT_WINS: number = 1;
+      const STAT_LOSSES: number = 2;
+      const STAT_DRAWS: number = 3;
+      const STAT_GOALS_FOR: number = 4;
+      const STAT_GOALS_AGAINST: number = 5;
+      const STAT_GOAL_DIFFERENCE: number = 9;
 
-    let standings: Array<any> = jsonSource.data.standings;
+      this._name = jsonSource.data.name;
+      this._season = jsonSource.data.seasonDisplay;
+      this._teams = Array<any>();
 
-    standings.forEach(standing => {
+      let standings: Array<any> = jsonSource.data.standings;
 
-      let team: any = standing.team;
-      let stats: Array<any> = standing.stats;
+      standings.forEach(standing => {
 
-      this._teams.push(new Team(
-          team.name,
-          team.abbreviation,
-          team.logos[0].href,
-          stats[STAT_RANK].value,
-          stats[STAT_POINTS].value,
-          stats[STAT_WINS].value,
-          stats[STAT_LOSSES].value,
-          stats[STAT_DRAWS].value,
-          stats[STAT_GOALS_FOR].value,
-          stats[STAT_GOALS_AGAINST].value,
-          stats[STAT_GOAL_DIFFERENCE].value
-        ))
-    });
+        let team: any = standing.team;
+        let stats: Array<any> = standing.stats;
+
+        this._teams.push(new Team(
+            team.name,
+            team.abbreviation,
+            team.logos[0].href,
+            stats[STAT_RANK].value,
+            stats[STAT_POINTS].value,
+            stats[STAT_WINS].value,
+            stats[STAT_LOSSES].value,
+            stats[STAT_DRAWS].value,
+            stats[STAT_GOALS_FOR].value,
+            stats[STAT_GOALS_AGAINST].value,
+            stats[STAT_GOAL_DIFFERENCE].value
+          ))
+      });
+    }
   }
 
   private _name: string;
