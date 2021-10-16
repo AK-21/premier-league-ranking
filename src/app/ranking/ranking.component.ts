@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
 import { RankingInfo, RankingService } from './ranking.service';
 
 @Component({
@@ -9,14 +9,12 @@ import { RankingInfo, RankingService } from './ranking.service';
 })
 export class RankingComponent implements OnInit {
 
-  constructor(private rankingService:RankingService) { }
+  constructor(private rankingService:RankingService, private route: ActivatedRoute) {}
 
-  info:RankingInfo = RankingInfo.empty();
+  info!:RankingInfo;
   
   order="ASC";
   tempSwitchLabel() {
-    //if(this.info != undefined)
-    //this.info.revertTeamsOrder();
 
     if(this.order==="ASC")
       this.order="DESC";
@@ -25,10 +23,8 @@ export class RankingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.rankingService.getFullInfo().subscribe(x=>{
-          if(x != null)
-            this.info = new RankingInfo(x);
+    this.route.data.subscribe(x=>{
+      this.info = new RankingInfo(x.info);
     });
   }
-
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -72,16 +72,16 @@ export class RankingInfo {
     this._teams.sort((a:Team, b:Team)=>a.name.localeCompare(b.name));
   }
 
+  sortTeamsByNameDESC(): void {
+    this._teams.sort((a:Team, b:Team)=>b.name.localeCompare(a.name));
+  }
+
   sortTeamsByPoints():void {
     this._teams.sort((a:Team, b:Team)=>this.compareNumbers(a.points, b.points));
   }
 
-  sortTeamsByRank():void {
-    this._teams.sort((a:Team, b:Team)=>this.compareNumbers(a.position, b.position));
-  }
-
-  revertTeamsOrder():void {
-    this._teams.reverse();
+  sortTeamsByPointsDESC():void {
+    this._teams.sort((a:Team, b:Team)=>this.compareNumbers(b.points, a.points));
   }
 }
 
@@ -154,7 +154,7 @@ export class RankingService {
 
   }
 
-  getFullInfo() {
+  getFullInfo() :Observable<any> {
     return this.http.get<any>('./api/?season=2021&sort=asc');
   }
 }

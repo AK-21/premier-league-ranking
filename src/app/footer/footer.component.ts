@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BooleanLiteral } from 'typescript';
 
 @Component({
   selector: 'app-footer',

@@ -3,16 +3,18 @@
         <h1>{{info.getHeader()}}</h1>
 
         <div ngbDropdown class="dropdown d-inline-block">
-            <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Sortuj</button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem (click)=info.sortTeamsByName()>Po nazwie klubu</button>
-              <button ngbDropdownItem (click)=info.sortTeamsByPoints()>Po liczbie punktów</button>
+            <button class="btn btn-secondary" id="sortDropdown" ngbDropdownToggle>Sortuj</button>
+            <div ngbDropdownMenu aria-labelledby="sortDropdown">
+                <button ngbDropdownItem (click)=info.sortTeamsByName()>Po nazwie klubu (rosnąco)</button>
+                <button ngbDropdownItem (click)=info.sortTeamsByNameDESC()>Po nazwie klubu (malejąco)</button>
+                <button ngbDropdownItem (click)=info.sortTeamsByPoints()>Po liczbie punktów (rosnąco)</button>
+                <button ngbDropdownItem (click)=info.sortTeamsByPointsDESC()>Po liczbie punktów (malejąco)</button>
             </div>
           </div>
 
         <div *ngFor='let team of info.teams'>
             <p>
-                <img class="logo" alt="Logo" src = "{{team.logo}}"/>
+                <img class="logo" alt="Logo {{team.abbreviation}}" src = "{{team.logo}}"/>
                 {{team.abbreviation}}
                 {{team.name}}
                 {{team.position}}
