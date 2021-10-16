@@ -1,31 +1,105 @@
-<div class="container">
+<div class="clearfix container">
     <section>
         <h1>{{info.getHeader()}}</h1>
-
-        <div ngbDropdown class="dropdown d-inline-block">
-            <button class="btn btn-secondary" id="sortDropdown" ngbDropdownToggle>Sortuj</button>
-            <div ngbDropdownMenu aria-labelledby="sortDropdown">
-                <button ngbDropdownItem (click)=info.sortTeamsByName()>Po nazwie klubu (rosnąco)</button>
-                <button ngbDropdownItem (click)=info.sortTeamsByNameDESC()>Po nazwie klubu (malejąco)</button>
-                <button ngbDropdownItem (click)=info.sortTeamsByPoints()>Po liczbie punktów (rosnąco)</button>
-                <button ngbDropdownItem (click)=info.sortTeamsByPointsDESC()>Po liczbie punktów (malejąco)</button>
+        <div class="row">
+            <div class="legend col-9 col-md-10">
+                <ul>
+                    <li><strong>Skr</strong> - Skrót zespołu</li>
+                    <li><strong>Poz</strong> - Pozycja w rankingu</li>
+                    <li><strong>Pt</strong> - Zdobyte punkty</li>
+                    <li><strong>W</strong> - Mecze wygrane</li>
+                    <li><strong>P</strong> - Mecze wygrane</li>
+                    <li><strong>R</strong> - Mecze zremisowane</li>
+                    <li><strong>Z</strong> - Zdobyte bramki</li>
+                    <li><strong>S</strong> - Stracone bramki</li>
+                </ul>
             </div>
-          </div>
-
-        <div *ngFor='let team of info.teams'>
-            <p>
-                <img class="logo" alt="Logo {{team.abbreviation}}" src = "{{team.logo}}"/>
-                {{team.abbreviation}}
-                {{team.name}}
-                {{team.position}}
-                pt:{{team.points}}
-                {{team.wins}}
-                {{team.losses}}
-                {{team.draws}}
-                {{team.goalsFor}}
-                {{team.goalsAgainst}}
-                {{team.goalDifference}}
-            </p>
+            <div class="col-3 col-md-2">
+                <div ngbDropdown class="dropdown d-block">
+                    <button class="btn btn-secondary" id="sortDropdown" ngbDropdownToggle>Sortuj</button>
+                    <div ngbDropdownMenu aria-labelledby="sortDropdown">
+                        <button ngbDropdownItem (click)=info.sortTeamsByName()>Po nazwie klubu (rosnąco)</button>
+                        <button ngbDropdownItem (click)=info.sortTeamsByNameDESC()>Po nazwie klubu (malejąco)</button>
+                        <button ngbDropdownItem (click)=info.sortTeamsByPoints()>Po liczbie punktów (rosnąco)</button>
+                        <button ngbDropdownItem (click)=info.sortTeamsByPointsDESC()>Po liczbie punktów (malejąco)</button>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="ranking">
+            <div class="header row">
+                <div class="cell col-3">
+                    Zespół
+                </div>
+                <div class="cell col-1">
+                    Skr
+                </div>
+                <div class="cell col-1">
+                    Poz
+                </div>
+                <div class="cell col-1">
+                    Pt
+                </div>
+                <div class="cell col-1">
+                    W
+                </div> 
+                <div class="cell col-1">
+                    P
+                </div> 
+                <div class="cell col-1">
+                   R
+                </div> 
+                <div class="cell col-1">
+                    Z
+                </div> 
+                <div class="cell col-1">
+                    S
+                </div> 
+                <div class="cell col-1">
+                    Z-S
+                </div>
+            </div>
+            <div *ngFor='let team of info.teams'>
+                <div class="row">
+                    <div class="cell col-3">
+                        <div class="row">
+                            <div class="col-12 col-md-3 col-lg-2">
+                                <img class="logo" alt="Logo {{team.abbreviation}}" src = "{{team.logo}}"/>
+                            </div>
+                            <div class="col-lg-10 col-md-9 col-sm-12">
+                                {{team.name}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cell col-1">
+                        <div class="abbr">{{team.abbreviation}}</div>                      
+                    </div>
+                    <div class="cell col-1">
+                        {{team.position}}
+                    </div>
+                    <div class="cell col-1">
+                        {{team.points}}
+                    </div>
+                    <div class="cell col-1">
+                        {{team.wins}}
+                    </div> 
+                    <div class="cell col-1">
+                        {{team.losses}}
+                    </div> 
+                    <div class="cell col-1">
+                        {{team.draws}}
+                    </div> 
+                    <div class="cell col-1">
+                        {{team.goalsFor}}
+                    </div> 
+                    <div class="cell col-1">
+                        {{team.goalsAgainst}}
+                    </div> 
+                    <div class="cell col-1">
+                        {{team.goalDifference}}
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </div>

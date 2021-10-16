@@ -1,5 +1,12 @@
 
 main {
     min-height: 800px;
-    padding-top: 100px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+@media (max-width: 565px) {
+    main {
+        padding-top: 70px;
+    }
 }

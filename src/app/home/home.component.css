@@ -1,0 +1,80 @@
+.main-content {
+    background-image:
+        linear-gradient(to top, rgb(255, 255, 255), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+        url("https://user-images.githubusercontent.com/37296308/137594522-e64f1e40-3178-4a7a-986c-2a009ad68b46.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-bottom: 200px;
+
+}
+
+header {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+header h1 {
+    font-size: 50px;    
+}
+
+header h2 {
+    font-size: 30px;    
+}
+
+header h1 ,header h2 {
+    color: #ffffff;
+    text-shadow: 2px 2px #0b0b0b;
+}
+
+article {
+    padding-top: 300px;
+    font-size: 24px;
+    text-shadow: 1px 1px #ffffff;
+}
+
+@media (max-width: 991px) {
+    .main-content {
+        padding-bottom: 10px;
+        background-size: auto 200%;
+        background-position: left top;
+    }
+
+    article {
+        padding-top: 50px;
+        padding-bottom: 300px;        
+        color: #ffffff;
+        text-shadow: 2px 2px #0b0b0b;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-content {
+        background-size: auto 200%;
+        background-position: -200px top;
+    }
+
+    article {
+        padding-top: 100px;
+        padding-bottom: 250px;
+    }
+}
+
+@media (max-width: 565px) {
+    .main-content {
+        padding-top: 50px;
+    }
+
+    article {
+        padding-top: 90px;
+        padding-bottom: 250px;
+        font-size: 20px;
+    }
+
+    header h1 {
+        font-size: 40px;
+    }
+
+    header h2 {
+        font-size: 25px;
+    }
+}
